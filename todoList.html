@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        
+            Enter Task<input type="text" name="task" ng-model="task">
+            <button type="button" ng-click="add()">Add to List</button>
+       
+        <div ng-repeat="t in todolist">
+        <input type="checkbox" ng-model="item">{{t}}
+        </div>
+        <button type="button" ng-click="remove()">Remove From List</button>
+    </div>
+    <script>
+        var app=angular.module("myApp",[]);
+
+        app.controller("myCtrl",function($scope){
+        
+            $scope.todolist=[];
+            $scope.add=function()
+            { 
+                if($scope.task)
+                {
+                    $scope.todolist.push($scope.task);
+                    $scope.task="";
+                }
+                else
+                {
+                alert("enter something")
+                }
+        }
+        
+           
+        $scope.remove=function(){
+                $scope.todolist.pop($scope.item);
+            }
+        })
+    </script>
+</body>
+</html>
+
+
+
+<!-- var app=angular.module("myApp",[]);
+app.controller('myCtrl',function($scope){ -->
